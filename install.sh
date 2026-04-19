@@ -35,3 +35,7 @@ echo "========================================="
 echo "  All done!"
 echo "========================================="
 echo "Restart your terminal or run 'source ~/.zshrc' to apply changes."
+
+# ---- Git Hooks ----
+git config core.hooksPath .githooks
+chmod +x .githooks/*

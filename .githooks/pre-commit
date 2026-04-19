@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# Non-destructive: after committing, ignored changes
+# won't get erased.
+# Markers:
+#
+# GITIGNORE_START
+# lines here
+# will be
+# ignored
+# GITIGNORE_END
+
+set -e
+
+tmpdir=$(mktemp -d)
+
+cleanup() {
+  rm -rf "$tmpdir"
+}
+
+trap cleanup EXIT
+
+files=$(git diff --cached --name-only --diff-filter=ACM)
+
+for file in $files; do
+  [ -f "$file" ] || continue
+
+  # Save original local version
+  cp "$file" "$tmpdir/original"
+
+  # Remove ignored lines
+  sed '/GITIGNORE_START/,/GITIGNORE_END/d' "$file" > "$tmpdir/clean"
+
+  # Add clean file to stage
+  cp "$tmpdir/clean" "$file"
+  git add "$file"
+
+  # Restore original local version
+  cp "$tmpdir/original" "$file"
+done
+
+exit 0
