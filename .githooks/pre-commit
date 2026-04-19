@@ -4,11 +4,11 @@
 # won't get erased.
 # Markers:
 #
-# gitignore_start(UPPERCASE)
+# GITIGNORE_START
 # lines here
 # will be
 # ignored
-# gitignore_end(UPPERCASE)
+# GITIGNORE_END
 
 set -e
 
@@ -25,7 +25,20 @@ files=$(git diff --cached --name-only --diff-filter=ACM)
 for file in $files; do
   [ -f "$file" ] || continue
 
-  # Save original local version
+  case "$file" in
+    .githooks/*|.git/hooks/*)
+      continue
+      ;;
+  esac
+
   cp "$file" "$tmpdir/original"
 
-  # Remove ignored lines
+  sed '/# GITIGNORE_START/,/# GITIGNORE_END/d' "$file" > "$tmpdir/clean"
+
+  cp "$tmpdir/clean" "$file"
+  git add "$file"
+
+  cp "$tmpdir/original" "$file"
+done
+
+exit 0
