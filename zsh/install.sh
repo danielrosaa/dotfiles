@@ -21,15 +21,6 @@ else
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$P10K_DIR"
 fi
 
-# ---- zsh-autosuggestions plugin ----
-AUTOSUGGESTIONS_DIR="$ZSH_DIR/custom/plugins/zsh-autosuggestions"
-if [ -d "$AUTOSUGGESTIONS_DIR" ]; then
-  echo "zsh-autosuggestions already installed, skipping..."
-else
-  echo "Cloning zsh-autosuggestions..."
-  git clone https://github.com/zsh-users/zsh-autosuggestions.git "$AUTOSUGGESTIONS_DIR"
-fi
-
 # ---- Symlinks ----
 echo "Creating symlinks..."
 
@@ -41,3 +32,21 @@ echo "  ~/.p10k.zsh -> $SCRIPT_DIR/.p10k.zsh"
 
 echo -e "\n------====== Zsh installed ======------"
 echo "Restart your terminal or run 'source ~/.zshrc' to apply changes."
+
+# ---- Plugins ----
+# zsh-autosuggestions plugin
+AUTOSUGGESTIONS_DIR="$ZSH_DIR/custom/plugins/zsh-autosuggestions"
+if [ -d "$AUTOSUGGESTIONS_DIR" ]; then
+  echo "zsh-autosuggestions already installed, skipping..."
+else
+  echo "Cloning zsh-autosuggestions..."
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git "$AUTOSUGGESTIONS_DIR"
+fi
+# zsh-syntax-highlighting plugin
+HIGHLIGHTING_DIR="$ZSH_DIR/custom/plugins/zsh-syntax-highlighting"
+if [ -d "$HIGHLIGHTING_DIR" ]; then
+  echo "zsh-syntax-highlighting already installed, skipping..."
+else
+  echo "Cloning zsh-syntax-highlighting..."
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HIGHLIGHTING_DIR"
+fi

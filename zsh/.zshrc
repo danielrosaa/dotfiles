@@ -84,15 +84,16 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	nvm
-	zsh-autosuggestions
-	themes
 	docker
 	docker-compose
+	git
+	nvm
 	python
-	ubuntu
+	themes
 	tmux
+	ubuntu
+	zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 # Plugins configs
