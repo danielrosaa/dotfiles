@@ -151,7 +151,3 @@ alias gm="git merge"
 alias gdiff="git diff"
 alias glog="git log --oneline"
 
-# GITIGNORE_START
-# Added by LM Studio CLI (lms)
- export PATH="$PATH:HOME/.lmstudio/bin"
-# GITGINORE_END

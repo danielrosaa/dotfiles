@@ -4,11 +4,11 @@
 # won't get erased.
 # Markers:
 #
-# GITIGNORE_START
+# gitignore_start(UPPERCASE)
 # lines here
 # will be
 # ignored
-# GITIGNORE_END
+# gitignore_end(UPPERCASE)
 
 set -e
 
@@ -29,14 +29,3 @@ for file in $files; do
   cp "$file" "$tmpdir/original"
 
   # Remove ignored lines
-  sed '/GITIGNORE_START/,/GITIGNORE_END/d' "$file" > "$tmpdir/clean"
-
-  # Add clean file to stage
-  cp "$tmpdir/clean" "$file"
-  git add "$file"
-
-  # Restore original local version
-  cp "$tmpdir/original" "$file"
-done
-
-exit 0
