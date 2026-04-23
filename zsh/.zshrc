@@ -153,3 +153,11 @@ alias glog="git log --oneline"
 
 # Added by LM Studio CLI (lms)
  export PATH="$PATH:HOME/.lmstudio/bin"
+
+# pnpm
+export PNPM_HOME="/home/daniel/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
