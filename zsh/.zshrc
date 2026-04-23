@@ -129,7 +129,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
+alias zshconfig="vim ~/.dotfiles/zsh/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"
 
 # Git Aliases
@@ -151,3 +151,11 @@ alias gm="git merge"
 alias gdiff="git diff"
 alias glog="git log --oneline"
 
+
+# pnpm
+export PNPM_HOME="/home/daniel/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
