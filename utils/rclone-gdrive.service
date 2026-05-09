@@ -1,0 +1,15 @@
+[Unit]
+Description=Rclone Google Drive Mount
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone mount gdrive: /home/%u/GoogleDrive \
+    --vfs-cache-mode full \
+    --dir-cache-time 72h \
+    --buffer-size 256M
+ExecStop=/bin/fusermount -u /home/%u/GoogleDrive
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
