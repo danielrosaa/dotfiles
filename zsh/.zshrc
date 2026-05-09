@@ -89,11 +89,9 @@ plugins=(
 	git
 	nvm
 	python
-	themes
 	tmux
-	ubuntu
 	zsh-autosuggestions
-    zsh-syntax-highlighting
+  zsh-syntax-highlighting
 )
 
 # Plugins configs
@@ -129,20 +127,10 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.dotfiles/zsh/.zshrc"
+alias zshconfig="vim $HOME/.dotfiles/zsh/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"
 
 # Git Aliases
-# .git-completion.bash: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
-location="~/.dotfiles/utils/git-completion.bash"
-if [ -f $location ]; then . $location
-    __git_complete gpull _git_pull
-    __git_complete gpush _git_push
-    __git_complete gc _git_checkout
-    __git_complete gm _git_merge
-    __git_complete gdiff _git_diff
-    __git_complete glog _git_log
-fi
 alias gs="git status"
 alias gpull="git pull"
 alias gpush="git push"
@@ -152,10 +140,10 @@ alias gdiff="git diff"
 alias glog="git log --oneline"
 
 # Added by LM Studio CLI (lms)
- export PATH="$PATH:HOME/.lmstudio/bin"
+ export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # pnpm
-export PNPM_HOME="/home/daniel/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
